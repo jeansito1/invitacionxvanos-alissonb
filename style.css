@@ -1,0 +1,699 @@
+/* Estilos generales */
+@font-face {
+  font-family: 'Darling';
+  src: url('fonts/Darling.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  background-color: #000;
+  color: white;
+  text-align: center;
+}
+
+/* VIDEO DE FONDO */
+#pantalla-inicial {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#pantalla-inicial video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0; /* 👈 muy importante */
+  filter: brightness(65%);
+}
+
+/* CONTENEDOR DEL BOTÓN (centrado sobre el video) */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  text-align: center;
+}
+
+
+
+#music-container {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 100;
+}
+
+#music-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid #00c3ff;
+  color: #00c3ff;
+  border-radius: 50%;
+  font-size: 25px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00c3ff;
+}
+
+#music-btn:hover {
+  background-color: #00c3ff;
+  color: white;
+  box-shadow: 0 0 20px #00e5ff;
+}
+/* Contenedor principal para que todo se alinee bien */
+#sobre-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+}
+
+/* Sobre */
+#sobre {
+  width: 50vh;
+  height: auto;
+  opacity: 0;
+  animation: aparecer 1.5s ease forwards 2s; /* aparece a los 2s */
+}
+
+/* Insignia (la A) */
+#insignia {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50vh;
+  height: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: aparecer 1.5s ease forwards 2s, rebote 1.5s infinite ease-in-out;
+  z-index: 6;
+}
+
+/* Área clickeable (más pequeña, centrada sobre la A) */
+#insignia-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  z-index: 7;
+}
+
+/* Animaciones */
+@keyframes aparecer {
+  to { opacity: 1; }
+}
+
+@keyframes rebote {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+/* ✨ Brillo suave */
+@keyframes brilloSuave {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px #097dc0) brightness(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #1773c4) brightness(1.5);
+  }
+}
+
+#sobre {
+  
+  width: 50vh;
+  height: auto;
+  opacity: 0;
+  animation: aparecer 1.5s ease forwards 2s, brilloSuave 3s ease-in-out infinite 2s;
+  z-index: 5;
+}
+
+#contenido {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* pantalla completa */
+  overflow: hidden;
+  background-color:white;
+}
+html, body {
+   margin: 0;
+  padding: 0;
+  height: auto; /* antes estaba 100%, ahora auto permite el scroll */
+  width: 100%;
+  background-color: transparent;
+  overflow-x: hidden; /* evita scroll horizontal */
+}
+
+/* --- PORTADA IZQUIERDA --- */
+.portada-contenedor {
+  width: 100%;
+  height: 100vh;
+  background-color: transparent; /* quitado el fondo negro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.portada {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+}
+
+/* --- AJUSTE PARA PC --- */
+@media (min-width: 1024px) {
+  .portada-contenedor {
+    width: 50vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* también transparente en PC */
+  }
+
+  .portada {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    object-fit: contain;
+    object-position: right center; /* centrada hacia el medio */
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: auto;           /* deja que crezca según contenido */
+  width: 100%;
+  background-color: #ffffff;
+  overflow-x: hidden;     /* evita scroll lateral */
+  overflow-y: auto;       /* permite scroll vertical en PC */
+}
+
+.primera-cara {
+  background-color: #f0f8ff;
+  position: relative;     /* contenedor padre para las absolutas */
+  width: 100%;
+  min-height: 100vh;      /* al menos una pantalla, pero crece con contenido */
+}
+
+
+/* --- PORTADA (lado izquierdo) --- */
+.portada-contenedor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50vw;         /* mitad izquierda */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.portada {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: right center;
+  display: block;
+}
+
+/* --- NOMBRES (lado derecho, pegado al centro) --- */
+.nombres-contenedor {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50vw;          /* mitad derecha */
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start; /* arranca pegado al centro */
+  align-items: center;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.nombres {
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+  object-position: left center; /* enfoca el lado izquierdo de la imagen */
+  display: block;
+}
+
+/* --- MODO CELULAR --- */
+@media (max-width: 1023px) {
+  body {
+    display: block;
+    position: relative;
+    overflow-y: auto;
+    background-color: transparent;
+  }
+
+  .portada-contenedor,
+  .nombres-contenedor {
+    position: relative;
+    width: 100%;
+    height: auto;              /* deja que la altura se adapte a la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+  }
+
+  .portada, 
+  .nombres {
+    width: 100%;
+    height: 100vh;             /* ocupa toda la pantalla */
+    object-fit: cover;         /* llena todo el espacio, sin bordes blancos */
+    object-position: center center;
+    display: block;
+  }
+
+  .nombres {
+    width: 100%;       
+    max-width: none;  
+    height: auto;
+    object-fit: contain;
+    object-position: center center;
+  }
+}
+
+
+
+.frase {
+  font-family: "Caudex", cursive;
+  font-weight: 500; /* puedes variar entre 100 y 400 según el grosor que prefieras */
+  color: #1e90ff;
+  font-size: 1.5rem;
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 2;
+  line-height: 1;
+  
+}
+
+/* Puedes ajustar para pantallas grandes si quieres un tamaño más grande */
+@media (min-width: 1024px) {
+  .frase {
+    font-size: 1.7rem;
+    top: 5%;
+  }
+}
+/* Contenedor general */
+.contador-contenedor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* pegado a la parte superior */
+  padding: 10px 0;
+  background-color: #f0f8ff; /* fondo celeste suave */
+  min-height: 35h; /* ocupa al menos toda la pantalla en PC */
+}
+@media (max-width: 1023px) {
+  .contador-contenedor {
+    padding-top: 10px; /* antes era 50px, lo sube un poco */
+  }
+}
+
+/* Cuadro del contador */
+.contador-cuadro {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid #a8d8ff;
+  border-radius: 15px;
+  padding: 20px 20px; /* más compacto */
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#contador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Caudex', serif;
+  color: #1e90ff;
+  font-size: 2rem;
+  gap: 10px; /* espacio entre bloques y barras */
+}
+
+.unidad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.unidad .label {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: #1e90ff;
+}
+
+.barra {
+  font-size: 2rem;
+  color: #1e90ff;
+  margin: 0 5px;
+}
+@media (min-width: 1024px) {
+  #contador {
+    font-size: 3rem; /* más grande en PC */
+  }
+
+  .unidad .label {
+    font-size: 1.2rem; /* etiquetas más grandes */
+  }
+
+  .barra {
+    font-size: 2.5rem;
+  }
+}
+/* Fondo celeste para PC en la primera cara */
+@media (min-width: 1024px) {
+  .primera-cara {
+    background-color: #f0f8ff; /* mismo color que el contador */
+  }
+}
+
+
+
+.contador-seccion {
+  background-color: #f0f8ff;
+  min-height: 100vh;
+  width: 100%;
+  display: block;       /* evita que flex rompa el centrado */
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.calendario-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none; /* no afecta el fondo */
+  border-radius: 10px;
+  width: fit-content; /* se ajusta al tamaño del calendario */
+  margin: 0 auto; /* centrado */
+  padding: 10px; /* pequeño espacio interno para que el borde no toque la imagen */
+}
+
+.calendario {
+  display: block;
+  margin: 30px auto 0 auto; /* tus márgenes originales */
+  height: auto;
+}
+
+@media (min-width: 1024px) {
+  .calendario {
+    width: 100%;   
+    margin-top: -80px;  
+  }
+}
+
+@media (max-width: 1023px) {
+  .calendario {
+    width: 120%;   
+    margin-top: -30px;
+  }
+}
+.divisor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f8ff; /* mismo fondo que el contador, opcional */
+  padding: 20px 0;
+}
+
+.divisor-img {
+  width: 60%;         /* ocupa el 60% del ancho en PC */
+  max-width: 590px;   /* no pasa de este tamaño */
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .divisor-img {
+    width: 80%;       /* un poco más grande en celular */
+  }
+}
+@media (min-width: 1024px) {
+  .divisor.primero {
+    position: relative;
+    z-index: 3;
+    margin-top: 0px; /* súbelo un poco, puedes ajustar */
+  }
+}
+.divisor-frase {
+  display: flex;
+  flex-direction: column; /* columna: divisor arriba, frase abajo */
+  align-items: center;    /* centra horizontalmente todo */
+  padding-bottom: 0;
+}
+@media (max-width: 1023px) {
+  .divisor-frase {
+    padding-bottom: 5px; /* un poquito si quieres */
+  }
+}
+
+.divisor-img-abajo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f8ff;
+  margin-top: -40px; /* pequeño ajuste en PC */
+  padding: 20px 0;
+}
+
+@media (max-width: 1023px) {
+  .divisor-img-abajo {
+    width: 80%;
+    margin-top: -50px;
+    padding: 10px 0;
+  }
+}
+
+.frase2-caja {
+  position: relative; 
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  padding: 15px 25px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  margin-top: -20px; /* opcional: acercar al divisor */
+  margin-bottom: 30px;
+}
+
+.frase2 {
+  font-family: "Caudex", cursive;
+  font-weight: 500;
+  color: #1e90ff;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+@media (max-width: 1023px) {
+  .frase2-caja {
+    width:80%;       /* ocupa menos ancho en móvil */
+    padding: 15px 20px; /* un poco más de margen interno */
+     margin-bottom: 10px; 
+  }
+}
+.munequita {
+  position: absolute;   /* fuera del flujo normal */
+  top: -130px;           /* sobresale por arriba del cuadro */
+  right: -10px;         /* sobresale por la derecha */
+  width: 150px;          /* tamaño en PC */
+  height: auto;
+  z-index: 5;           /* sobre el cuadro */
+}
+
+/* Ajuste para móvil */
+@media (max-width: 1023px) {
+  .munequita {
+    width: 100px;       /* tamaño más pequeño en móvil */
+    top: -85px;
+    right: -8px;
+  }
+  }
+/* Contenedor general de las caras */
+.dos-caras {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* clave: no center vertical */
+  flex-wrap: wrap; 
+  padding: 20px 0; /* menos espacio arriba/abajo */
+  background-color: #f0f8ff;
+  gap: 20px;
+}
+
+/* Cada cara */
+.cara {
+  position: relative;
+  width: 45%;
+  max-width: 500px;
+  margin: 0 10px; /* margen horizontal entre caras si hay más de una */
+}
+
+/* Imagen de cada cara */
+.cara-img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+.cara-izquierda {
+  margin-left: 0;  /* pega un poco a la izquierda del contenedor */
+}
+
+/* 📱 En celular */
+@media (max-width: 1023px) {
+  .cara {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto; /* centrado horizontal y pegado al divisor */
+  }
+}
+.cara-derecha {
+  position: relative; /* para posicionar el botón respecto a esta cara */
+}
+.btn-ubicacion {
+  font-family: "Caudex", cursive;
+  font-weight: 500;
+  position: absolute;      /* sacamos del flujo normal */
+  top: 43%;                /* casi al medio vertical */
+  left: 50%;               /* centrado horizontal */
+  transform: translate(-50%, -50%); /* centra exactamente */
+  padding: 10px 20px;
+  background-color: #f0f8ff;
+  color: #1e90ff;
+  font-family: "Caudex", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.btn-ubicacion:hover {
+  background-color: #ffffff;
+  box-shadow: 0 5px 20px rgba(66, 214, 255, 0.3);
+}
+.dos-caras {
+  display: flex;
+  justify-content: center; /* centramos la fila */
+  align-items: flex-start;
+  flex-wrap: wrap; /* para que en móvil se apilen */
+  padding: 20px 0;
+  background-color: #f0f8ff;
+  gap: 20px;
+}
+
+.cara {
+  position: relative;
+  width: 45%;
+  max-width: 500px;
+}
+
+.cara-img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.cara-izquierda {
+  transform: translateX(-30px); /* deja un poco hacia la izquierda del centro en PC */
+}
+
+/* Móvil */
+@media (max-width: 1023px) {
+  .cara {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    transform: none;
+  }
+}
+.btn-confirmar {
+  font-family: "Caudex", cursive;
+  font-weight: 500;
+  position: absolute;      /* sacamos del flujo normal */
+  top: 55%;                /* casi al medio vertical */
+  left: 50%;               /* centrado horizontal */
+  transform: translate(-50%, -50%); /* centra exactamente */
+  padding: 10px 20px;
+  background-color: #f0f8ff;
+  color: #1e90ff;
+  font-size: 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.btn-confirmar:hover {
+  background-color: #ffffff;
+  box-shadow: 0 5px 20px rgba(66, 214, 255, 0.3);
+}
+.fade-scroll {
+  opacity: 0;
+  visibility: hidden;  /* mantiene el espacio ocupado */
+  transition: opacity 1s ease; /* solo desvanecimiento */
+}
+
+.fade-scroll.visible {
+  opacity: 1;
+  visibility: visible;
+}
+/* Bloquear selección y arrastre de todo el contenido */
+body, section, div, p, span, img {
+  user-select: none;        /* no se puede seleccionar texto */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;  /* no se pueden arrastrar imágenes */
+  user-drag: none;
+  pointer-events: none;     /* bloquea clics y eventos por defecto */
+}
+
+/* Permitir clics solo en botones */
+a, button, #insignia-btn {
+  pointer-events: auto;
+}

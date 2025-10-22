@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación XV</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+US+Modern:wght@100..400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+
+
+  <style>
+    /* ----------------- Pantalla inicial ----------------- */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
+      background: #000;
+    }
+    
+    #pantalla-inicial {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 100;
+      background: #000;
+      transition: opacity 1s ease;
+    }
+
+    #pantalla-inicial video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: contain;
+      z-index: -1;
+    }
+
+    #pantalla-inicial .overlay {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Botón música flotante */
+    #music-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 200;
+    }
+
+    #music-btn {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid #00c3ff;
+      color: #00c3ff;
+      border-radius: 50%;
+      font-size: 25px;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00c3ff;
+    }
+
+    #music-btn:hover {
+      background-color: #00c3ff;
+      color: white;
+      box-shadow: 0 0 20px #00e5ff;
+    }
+
+    
+
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla inicial -->
+  <!-- Pantalla inicial -->
+<section id="pantalla-inicial">
+  <video autoplay muted loop playsinline id="videoFondo">
+    <source src="media/intro.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay">
+    <!-- Sobre e insignia -->
+    <div id="sobre-container">
+      <img src="media/sobre.png" id="sobre" alt="Sobre">
+      <img src="media/insignia-A.png" id="insignia" alt="Insignia A">
+      <div id="insignia-btn"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Botón de música fuera de pantalla inicial, siempre visible -->
+<div id="music-container">
+  <button id="music-btn">🔊</button>
+  <audio id="music" src="media/musica.mp3" loop></audio>
+</div>
+
+<!-- Contenido Fondo -->
+ <!-- Primera cara -->
+<section class="primera-cara ">
+  <div class="portada-contenedor">
+    <img src="media/portada1.png" alt="Portada" class="portada">
+  </div>
+
+  <div class="nombres-contenedor fade-scroll">
+    <p class="frase fade-scroll">"Con ilusión, fe y alegría, inicio una nueva <br> etapa de mi vida."</p>
+    <img src="media/nombres1.png" alt="Nombres" class="nombres">
+  </div>
+</section>
+  <!-- Primer divisor, arriba del contador -->
+
+<div class="divisor primero">
+  <img src="media/divisor.png" alt="Divisor decorativo" class="divisor-img">
+</div>
+<!-- Segunda cara: contador -->
+<section class="contador-seccion">
+  <div class="contador-contenedor fade-scroll">
+    <div class="contador-cuadro fade-scroll">
+      <div id="contador">
+        <div class="unidad">
+          <span id="dias">0</span>
+          <div class="label">Días</div>
+        </div>
+        <div class="barra">|</div>
+        <div class="unidad">
+          <span id="horas">0</span>
+          <div class="label">Horas</div>
+        </div>
+        <div class="barra">|</div>
+        <div class="unidad">
+          <span id="minutos">0</span>
+          <div class="label">Minutos</div>
+        </div>
+        <div class="barra">|</div>
+        <div class="unidad">
+          <span id="segundos">0</span>
+          <div class="label">Segundos</div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- Calendario -->
+<div class="calendario-contenedor fade-scroll">
+  <img src="media/calendario.png" alt="Calendario" class="calendario">
+</div>  
+  <div class="divisor-frase">
+  <div class="divisor">
+    <img src="media/divisor.png" alt="Divisor decorativo" class="divisor-img divisor-img-abajo">
+  </div>
+  <div class="frase2-caja">
+  <p class="frase2 fade-scroll">“El sol abraza mis sueños con su luz dorada, el viento lleva mis esperanzas a lo más alto <br> cada latido de mi pecho celebra la magia de empezar una etapa que me invita a soñar sin límites.”</p>
+    <img src="media/bruja1.png" alt="Muñequita" class="munequita">
+</div>
+</div>
+
+</section>
+
+
+<section class="dos-caras">
+  <div class="cara cara-izquierda fade-scroll">
+    <img src="media/padres1.png" alt="Padres" class="cara-img">
+  </div>
+   <div class="cara cara-derecha fade-scroll">
+    <img src="media/detalles1.png" alt="Detalles" class="cara-img">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=-11.907501386789%2C-77.035319259583&fbclid=IwY2xjawNkiFVleHRuA2FlbQIxMABicmlkETBSY3B1VEIxT0RvaXFPWXI5AR57wZc5CSXmPP1t0OauBrZBB2xLwNXaNEQFq-bBSup2_-BGCeqM5cfmRpO19g_aem_0v6avxN_roinU6_Vns5ToQ" target="_blank" class="btn-ubicacion">UBICACIÓN</a>
+  </div>
+</section>
+<section class="dos-caras">
+  <div class="cara cara-izquierda fade-scroll">
+    <img src="media/codigovestimenta1.png" alt="Código de Vestimenta 1" class="cara-img">
+  </div>
+  <div class="cara cara-derecha fade-scroll">
+  <img src="media/confirmarasistencia1.png" alt="Confirmar Asistencia" class="cara-img">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSctLX3qIeWyTQnVhoTp45w4T2sXe2ohgazkqHW10KaiWCsXXQ/viewform?usp=publish-editor" target="_blank" class="btn-confirmar">CONFIRMAR ASISTENCIA</a>
+</div>
+
+</section>
+  <!-- JS -->
+  <script>
+    const music = document.getElementById("music");
+    const musicBtn = document.getElementById("music-btn");
+    const pantallaInicial = document.getElementById("pantalla-inicial");
+    const contenido = document.getElementById("contenido");
+    const insigniaBtn = document.getElementById("insignia-btn");
+
+    let isPlaying = false;
+
+    // Al hacer clic en la insignia
+    insigniaBtn.addEventListener("click", () => {
+      // Inicia la música si no está sonando
+      if (!isPlaying) {
+        music.play().catch(e => console.log(e));
+        isPlaying = true;
+        musicBtn.textContent = "⏸️";
+      }
+
+      // Desvanece la pantalla inicial
+      pantallaInicial.style.opacity = 0;
+      setTimeout(() => {
+        pantallaInicial.style.display = "none";
+        contenido.style.display = "block";
+      }, 1000);
+    });
+
+    // Botón de música flotante (play/pause)
+    musicBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        music.play().catch(e => console.log(e));
+        isPlaying = true;
+        musicBtn.textContent = "⏸️";
+      } else {
+        music.pause();
+        isPlaying = false;
+        musicBtn.textContent = "🔊";
+      }
+    });
+  </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const diasSpan = document.getElementById("dias");
+  const horasSpan = document.getElementById("horas");
+  const minutosSpan = document.getElementById("minutos");
+  const segundosSpan = document.getElementById("segundos");
+
+  const fechaObjetivo = new Date("November 21, 2025 00:00:00").getTime();
+
+  function actualizarContador() {
+    const ahora = new Date().getTime();
+    const distancia = fechaObjetivo - ahora;
+
+    if(distancia < 0){
+      diasSpan.innerText = horasSpan.innerText = minutosSpan.innerText = segundosSpan.innerText = 0;
+      return;
+    }
+
+    const dias = Math.floor(distancia / (1000*60*60*24));
+    const horas = Math.floor((distancia % (1000*60*60*24)) / (1000*60*60));
+    const minutos = Math.floor((distancia % (1000*60*60)) / (1000*60));
+    const segundos = Math.floor((distancia % (1000*60)) / 1000);
+
+    diasSpan.innerText = dias;
+    horasSpan.innerText = horas;
+    minutosSpan.innerText = minutos;
+    segundosSpan.innerText = segundos;
+  }
+
+  // Llamada inicial y luego cada segundo
+  actualizarContador();
+  setInterval(actualizarContador, 1000);
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".fade-scroll");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {
+    threshold: 0.2 // 20% visible para activar
+  });
+
+  elements.forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
